@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0B1220,50:1E3A8A,100:2563EB&height=200&section=header&text=Aashish%20Rayamajhi&fontSize=52&fontColor=ffffff&fontAlignY=34&desc=Senior%20Backend%20%26%20AI%20Engineer%20%C2%B7%20Document%20Intelligence%20%C2%B7%20Distributed%20Systems&descAlignY=56&descSize=16" width="100%" alt="Aashish Rayamajhi" />
+<img src="assets/banner.svg" width="100%" alt="Aashish Rayamajhi — Senior Backend & AI Engineer" />
 
-<a href="https://merodafa.com"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=21&pause=1200&color=2563EB&center=true&vCenter=true&width=760&lines=I+build+AI+that+reads+documents.;Scanned+PDF+in.+Structured+data+out.;600%2B+pages%2C+cited+down+to+the+clause.;Durable+pipelines+that+survive+failure.;Python+%C2%B7+Go+%C2%B7+Temporal+%C2%B7+Kubernetes" alt="What I do" /></a>
+<img src="assets/typing.svg" width="780" alt="I build agents that read the fine print" />
 
 </div>
 
@@ -10,95 +10,118 @@
 
 ## What I do
 
-I build **AI document extraction systems** — software that reads messy, scanned,
-600-page documents and turns them into clean structured data you can search and
-trust.
+I build **agentic AI systems for documents** — end-to-end workflows that take
+unstructured, scanned, multilingual source material and turn it into structured
+data a business can act on.
 
-The model is the easy part. The engineering is everything around it: OCR that
-preserves layout, indexing that survives documents far larger than any context
-window, orchestration that resumes instead of restarting, and citations that
-prove where every answer came from.
-
-<div align="center">
-
-```mermaid
-flowchart LR
-    A["📄 Scanned PDF<br/><sub>600+ pages</sub>"] --> B["🔍 OCR<br/><sub>digital + Vision</sub>"]
-    B --> C["📝 Markdown<br/><sub>~800K chars</sub>"]
-    C --> D["🧠 LLM Indexing<br/><sub>chunked + merged</sub>"]
-    D --> E["🌳 Structured Tree<br/><sub>navigable sections</sub>"]
-    E --> F["💬 Plain-language Q&A"]
-    F --> G["🎯 Cited Answer<br/><sub>mapped to the exact clause</sub>"]
-
-    classDef inp fill:#1E3A8A,stroke:#3B82F6,stroke-width:2px,color:#fff
-    classDef mid fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#E2E8F0
-    classDef out fill:#065F46,stroke:#10B981,stroke-width:2px,color:#fff
-    class A inp
-    class B,C,D,E mid
-    class F,G out
-```
-
-<sub><i>Extraction pipeline behind <a href="https://merodafa.com"><b>Dafa</b></a>.</i></sub>
-
-</div>
+I have worked on complex document workflows end to end: ingestion, OCR,
+normalization, retrieval, LLM reasoning, and the durable orchestration that keeps
+a twenty-minute multi-step job alive when step six fails. The model is the easy
+part — the engineering is everything around it.
 
 ---
 
-## How it runs
+## 🚀 [Dafa](https://merodafa.com) · regulatory compliance intelligence
 
-A single ingestion is eight steps and twenty-plus minutes of OCR and LLM calls.
-Step six failing must not mean starting over. So the pipeline is **durable, not
-merely asynchronous** — every step is an idempotent activity with its own retry
-policy and checkpoint, and a worker crash resumes mid-document instead of
-re-burning the whole job.
+Regulations change constantly, across dozens of government portals, in two
+languages, as scanned PDFs. Dafa watches all of it and tells a compliance officer
+what changed, what it means for *their* business, and by when.
 
-<div align="center">
+```mermaid
+flowchart LR
+    S["🌐 Gov portals<br/><sub>daily crawl, per country</sub>"] --> O["🔍 OCR<br/><sub>scanned + bilingual</sub>"]
+    O --> T["🗣️ Legal translation<br/><sub>precision over fluency</sub>"]
+    T --> DD["♻️ Deduplication<br/><sub>same directive, 5 portals</sub>"]
+    DD --> DF["📊 Change detection<br/><sub>diff old vs new</sub>"]
+    DF --> CL["🏷️ Classification<br/><sub>industry · company type</sub>"]
+    CL --> XR["🔗 Cross-reference<br/><sub>amends Section 47 of Act X</sub>"]
+    XR --> EX["📋 Field extraction<br/><sub>effective date · penalty · filing</sub>"]
+    EX --> IA["🧠 Impact analysis<br/><sub>LLM + customer context</sub>"]
+    IA --> AL["🔔 Alerting<br/><sub>compliance officer, within hours</sub>"]
+
+    classDef src fill:#1E3A8A,stroke:#3B82F6,stroke-width:2px,color:#fff
+    classDef mid fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#E2E8F0
+    classDef out fill:#065F46,stroke:#10B981,stroke-width:2px,color:#fff
+    class S src
+    class O,T,DD,DF,CL,XR,EX mid
+    class IA,AL out
+```
+
+| Capability | What it means in practice |
+|---|---|
+| **Daily acquisition** | Scheduled crawl of every major government portal, per country |
+| **Bilingual OCR** | Scanned PDFs in mixed-language layouts — the hard case, and the edge |
+| **Legal translation** | Translation tuned for legal precision, not readability |
+| **Change detection** | Structural diff between old and new versions of a regulation |
+| **Classification** | Which industries and company types does this actually affect? |
+| **Cross-referencing** | Resolves "this circular modifies Section 47 of Act X" into a real link |
+| **Deduplication** | One directive published across five portals collapses to one record |
+| **Field extraction** | Effective date, penalty, filing requirement — as structured fields |
+| **Impact analysis** | Given a customer's business context, what does this change mean for them? |
+| **Alerting** | Compliance officer notified within hours of publication |
+
+---
+
+## How the agent layer works
+
+Compliance answers cannot be one LLM call. A supervisor decomposes the question,
+specialist agents work in parallel against real tools, and a critic agent rejects
+weak output back to the planner. Every step is traced, scored, and replayable —
+if an answer was wrong last Tuesday, I can reproduce exactly why.
 
 ```mermaid
 flowchart TB
-    subgraph edge["🌐 Edge"]
-        NG["Nginx"] --> API["FastAPI<br/><sub>async, typed</sub>"]
+    subgraph plan["🧭 Planning"]
+        SUP["Supervisor agent<br/><sub>LangGraph state machine</sub>"]
     end
 
-    subgraph orch["⚙️ Durable Orchestration"]
-        API --> TMP["Temporal<br/><sub>workflow engine</sub>"]
-        TMP --> W1["OCR<br/>worker"]
-        TMP --> W2["Indexing<br/>worker"]
-        TMP --> W3["Embedding<br/>worker"]
+    subgraph deep["🤖 Deep agents"]
+        A1["Research<br/>agent"]
+        A2["Diff<br/>agent"]
+        A3["Impact<br/>agent"]
+        A4["Critic<br/>agent"]
     end
 
-    subgraph data["🗄️ Data"]
-        W1 --> GFS[("GridFS<br/><sub>source PDFs</sub>")]
-        W2 --> MDB[("MongoDB<br/><sub>trees + pages</sub>")]
-        W3 --> VEC[("Vector store<br/><sub>retrieval</sub>")]
-        API --> RD[("Redis<br/><sub>cache + locks</sub>")]
+    subgraph tool["🛠️ Tools"]
+        MCP["MCP servers"]
+        RET["Hybrid retrieval<br/><sub>vector + keyword</sub>"]
+        STO[("Structured store")]
     end
 
-    subgraph ops["📈 Platform"]
-        K8S["Kubernetes<br/><sub>autoscaled workers</sub>"]
-        CI["GitHub Actions<br/><sub>test → build → deploy</sub>"]
-        OBS["OpenTelemetry<br/>→ Grafana"]
+    subgraph eval["📈 Tracing &amp; evals"]
+        LF["Langfuse<br/><sub>traces · cost · scores</sub>"]
+        RG["Regression suite<br/><sub>golden answers</sub>"]
     end
 
-    orch -.-> K8S
-    CI -.-> K8S
-    orch -.-> OBS
+    SUP --> A1
+    SUP --> A2
+    SUP --> A3
+    A1 --> A4
+    A2 --> A4
+    A3 --> A4
+    A4 -->|"reject → replan"| SUP
+    A4 -->|"accept"| OUT["✅ Cited answer"]
 
-    classDef e fill:#1E3A8A,stroke:#3B82F6,stroke-width:2px,color:#fff
-    classDef o fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#E2E8F0
-    classDef d fill:#065F46,stroke:#10B981,stroke-width:2px,color:#fff
+    A1 --> MCP
+    A2 --> RET
+    A3 --> STO
+    deep -.-> LF
+    LF --> RG
+
     classDef p fill:#3F1D5C,stroke:#A855F7,stroke-width:2px,color:#fff
-    class NG,API e
-    class TMP,W1,W2,W3 o
-    class GFS,MDB,VEC,RD d
-    class K8S,CI,OBS p
+    classDef a fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#E2E8F0
+    classDef t fill:#1E3A8A,stroke:#3B82F6,stroke-width:2px,color:#fff
+    classDef o fill:#065F46,stroke:#10B981,stroke-width:2px,color:#fff
+    class SUP p
+    class A1,A2,A3,A4 a
+    class MCP,RET,STO t
+    class LF,RG,OUT o
 ```
 
-</div>
-
-**What that buys:** partial failure costs one activity, not one document.
-Backpressure is a queue depth, not a timeout. Replaying a workflow reproduces a
-bug exactly.
+**Why it is built this way:** a critic loop catches confident nonsense before a
+customer sees it. Tracing makes cost and latency per agent visible instead of
+mysterious. And a golden-answer regression suite means a prompt change cannot
+silently degrade an answer that used to be right.
 
 ---
 
@@ -111,6 +134,23 @@ bug exactly.
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
+
+</td></tr>
+<tr><td><b>Agentic&nbsp;AI</b></td><td>
+
+![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![Langfuse](https://img.shields.io/badge/Langfuse-0A0A0A?style=flat-square&logo=langfuse&logoColor=white)
+![MCP](https://img.shields.io/badge/MCP-D97757?style=flat-square&logo=modelcontextprotocol&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=pydantic&logoColor=white)
+
+</td></tr>
+<tr><td><b>Models&nbsp;&amp;&nbsp;OCR</b></td><td>
+
+![Claude](https://img.shields.io/badge/Claude-D97757?style=flat-square&logo=anthropic&logoColor=white)
+![Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=googlegemini&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
+![Vision OCR](https://img.shields.io/badge/Vision_OCR-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
 
 </td></tr>
 <tr><td><b>Backend</b></td><td>
@@ -136,14 +176,6 @@ bug exactly.
 ![Elasticsearch](https://img.shields.io/badge/Elasticsearch-005571?style=flat-square&logo=elasticsearch&logoColor=white)
 
 </td></tr>
-<tr><td><b>AI / ML</b></td><td>
-
-![Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=googlegemini&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
-![Vision OCR](https://img.shields.io/badge/Vision_OCR-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-
-</td></tr>
 <tr><td><b>DevOps</b></td><td>
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
@@ -167,28 +199,11 @@ bug exactly.
 
 ---
 
-## Building now
-
-### 🚀 [Dafa](https://merodafa.com) · document intelligence for law & tax
-
-Statutes go in as scanned PDFs. A navigable index of the act comes out — ask a
-question in plain language, get an answer anchored to the exact clause.
-
-| | |
-|---|---|
-| **Ingestion** | 600+ page statutes, upload to queryable index, checkpointed per step |
-| **OCR** | Per-page routing — digital text extraction, Google Vision for scans |
-| **Indexing** | LLM-built section tree over ~800K characters, chunked and reassembled |
-| **Citations** | Every answer mapped back to its region on the source page |
-| **Ops** | Containerized workers, autoscaled per queue depth, traced end to end |
-
----
-
 ## Selected work
 
 | Project | What it does |
 |---|---|
-| 🚀 **[Dafa](https://merodafa.com)** | AI document extraction for legal & tax — OCR, LLM indexing, clause-level citations |
+| 🚀 **[Dafa](https://merodafa.com)** | Regulatory compliance intelligence — crawl, bilingual OCR, change detection, LLM impact analysis, alerting |
 | 📦 **Waybill** | Cargo and courier tracking — shipment lifecycle, route checkpoints, live customer status |
 | 📞 **AI-Enabled VOIP System** | Programmable calling with automated call handling and routing |
 | 💬 **Omnichannel Communication Platform** | One inbox across voice, SMS, and chat with unified threading |
@@ -200,20 +215,10 @@ question in plain language, get an answer anchored to the exact clause.
 
 ---
 
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=Ashish2345&show_icons=true&count_private=true&hide_border=true&theme=tokyonight&hide_title=true&hide=issues" height="165" alt="stats" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ashish2345&layout=compact&hide_border=true&theme=tokyonight&langs_count=6" height="165" alt="top languages" />
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Ashish2345&theme=tokyo-night&hide_border=true&area=true" width="98%" alt="activity graph" />
-
-</div>
-
----
-
 ## How I work
 
 - **Durability over cleverness.** If a step can fail, it gets a retry policy and a checkpoint.
+- **Evals before vibes.** An agent without a regression suite is a demo, not a product.
 - **Explicit beats implicit.** Types and schemas at every boundary; the inside can stay pragmatic.
 - **Observable by default.** A system you cannot trace is a system you cannot operate.
 - **Reproducible or unfinished.** If it does not come up clean in Docker, it is not done.
@@ -226,7 +231,5 @@ Also work in cybersecurity — vulnerability assessment and threat detection.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-ashish12.com.np-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ashish12.com.np)
 [![Dafa](https://img.shields.io/badge/Product-merodafa.com-10B981?style=for-the-badge&logo=vercel&logoColor=white)](https://merodafa.com)
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,50:1E3A8A,100:0B1220&height=120&section=footer" width="100%" alt="" />
 
 </div>

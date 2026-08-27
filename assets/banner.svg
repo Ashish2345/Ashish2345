@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" width="1200" height="260" role="img" aria-label="Aashish Rayamajhi — Senior Backend and AI Engineer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B16"/>
+      <stop offset="55%" stop-color="#132A5E"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+
+    <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#93C5FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate"
+        values="-1 0; 1 0; -1 0" dur="7s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="55%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#60A5FA" stroke-width="0.5" stroke-opacity="0.12"/>
+    </pattern>
+
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="260" fill="url(#bg)"/>
+  <rect width="1200" height="260" fill="url(#grid)"/>
+
+  <circle cx="1020" cy="70" r="190" fill="url(#glow)">
+    <animate attributeName="r" values="170;205;170" dur="9s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- document -> structure motif -->
+  <g opacity="0.5" transform="translate(946 92)">
+    <rect x="0" y="0" width="72" height="92" rx="6" fill="none" stroke="#93C5FD" stroke-width="2"/>
+    <path d="M12 20 H50 M12 34 H58 M12 48 H44 M12 62 H54" stroke="#60A5FA" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M84 46 H128" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M118 38 L128 46 L118 54" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g>
+      <rect x="140" y="10" width="16" height="16" rx="3" fill="#10B981"/>
+      <rect x="140" y="38" width="16" height="16" rx="3" fill="#34D399"/>
+      <rect x="140" y="66" width="16" height="16" rx="3" fill="#10B981"/>
+      <animate attributeName="opacity" values="0.45;1;0.45" dur="3.2s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <text x="70" y="112" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif"
+        font-size="56" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">
+    Aashish Rayamajhi
+  </text>
+
+  <rect x="72" y="132" width="330" height="3" rx="1.5" fill="url(#rule)"/>
+  <rect x="72" y="132" width="330" height="3" rx="1.5" fill="url(#shimmer)"/>
+
+  <text x="72" y="176" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif"
+        font-size="21" font-weight="600" fill="#BFDBFE" letter-spacing="0.6">
+    Senior Backend &amp; AI Engineer
+  </text>
+
+  <text x="72" y="208" font-family="Consolas, SFMono-Regular, Menlo, monospace"
+        font-size="15.5" fill="#7FA6E8" letter-spacing="0.4">
+    agentic systems  ·  end-to-end document workflows  ·  distributed backends
+  </text>
+</svg>
