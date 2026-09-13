@@ -2,7 +2,7 @@ name: Generate contribution snake
 
 on:
   schedule:
-    # Every 6 hours. Cron on GitHub Actions is best-effort, not exact.
+    # Every 6 hours. Actions cron is best-effort, not exact.
     - cron: "0 */6 * * *"
   workflow_dispatch:
   push:
@@ -17,17 +17,22 @@ jobs:
       contents: write
 
     steps:
+      # color_dots takes five values: empty cell first, then the four
+      # contribution levels. The first value is what used to read as near-black
+      # against GitHub's dark theme -- it is now a visible slate that matches
+      # the terminal card, with a cyan ramp above it and an orange snake so the
+      # snake stays legible against its own trail.
       - name: Generate the snake SVGs
         uses: Platane/snk@v3
         id: snake
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+            dist/github-snake.svg?color_snake=#ff9f43&color_dots=#e6edf3,#bfe3ee,#7fd3e5,#3fb6d4,#1a8fae
+            dist/github-snake-dark.svg?color_snake=#ff9f43&color_dots=#1b3a52,#0e7490,#22b8cf,#4dd0e1,#7ee7f5
 
       # Publishes dist/ to a dedicated `output` branch, so the generated SVGs
-      # never touch main and never clutter the commit history you show people.
+      # never land in main's history.
       - name: Push to the output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
