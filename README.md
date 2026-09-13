@@ -1,31 +1,27 @@
 <div align="center">
 
+<img src="assets/terminal.svg" width="100%" alt="Aashish Rayamajhi — backend and AI engineer" />
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Ashish2345/Ashish2345/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Ashish2345/Ashish2345/output/github-snake.svg" />
   <img alt="Contribution graph" src="https://raw.githubusercontent.com/Ashish2345/Ashish2345/output/github-snake.svg" width="100%" />
 </picture>
 
-<img src="assets/banner.svg" width="100%" alt="Aashish Rayamajhi — Senior Backend & AI Engineer" />
-
 </div>
 
 ---
 
-I build AI systems that read documents.
+I'm a backend and AI engineer in Kathmandu. Six years building systems other people
+depend on — document pipelines, programmable telephony, multi-tenant HR platforms,
+CRMs, and asset management for the Government of Nepal. Mostly Python and Go.
 
-Right now that's **[Dafa](https://merodafa.com)**. It watches the government portals that
-publish regulation in a country — scanned PDFs, two languages, dozens of sources — and when
-something changes it tells a compliance officer what changed, what it means for their
-business, and by when.
+Lately the work is document AI: OCR and extraction pipelines, agentic workflows on
+LangGraph, and the durable orchestration that keeps a twenty-minute job alive when
+step six fails. I care more about what happens on the unhappy path than about the demo.
 
-The model is the easy part. Most of the work is the machinery around it: OCR that survives a
-scanned bilingual statute, indexing for documents far larger than any context window, and
-orchestration that resumes at step six instead of starting the twenty-minute job over.
-
-Before Dafa I spent a few years shipping business systems end to end — programmable VOIP with
-automated call routing, multi-tenant HRM, omnichannel messaging, asset management for the
-Government of Nepal. Currently at Docsumo, working on document AI.
+Currently at Docsumo. On the side I build [Dafa](https://merodafa.com), which tracks
+regulatory change across government portals.
 
 **Stack** — Python · Go · FastAPI · Django · LangGraph · Langfuse · PostgreSQL · MongoDB · Redis · Docker · Kubernetes · Temporal
 
