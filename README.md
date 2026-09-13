@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/terminal.svg" width="100%" alt="Aashish Rayamajhi — backend and AI engineer" />
+<img src="assets/terminal.svg?v=2" width="100%" alt="Aashish Rayamajhi — full-stack and AI/ML engineer" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Ashish2345/Ashish2345/output/github-snake-dark.svg" />
